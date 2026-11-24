@@ -468,38 +468,3 @@ with tab_perf:
                       + [(short_lang(LANG_NAMES.get(k, k)), f"{v:.0%}", "accuracy") for k, v in acc.items()], cols=len(acc) + 1))
         st.write("")
         st.dataframe(bdf, hide_index=True, width="stretch")
-
-# ====================================================================== ABOUT
-with tab_about:
-    html(ui.heading("Project demonstration rubric", "30 marks · where each criterion is shown in the app"))
-    html(ui.rubric_cards([
-        ("CO1", 7, "Text extraction, preprocessing, cleaning & vectorisation of unstructured data",
-         "Analyze › Language › NLP pipeline · Batch analysis",
-         ["File upload (CSV/PDF/…)", "Cleaning steps", "Hinglish normalisation", "TF-IDF", "BERT tokens"]),
-        ("CO2", 8, "Implementation & evaluation of sentiment analysis and information extraction",
-         "Analyze › Summary & Language · Model performance",
-         ["Fine-tuned mBERT", "VADER sentiment", "NER & targets", "Baseline comparison"]),
-        ("CO3", 7, "Topic modelling or multilingual NLP using NLP techniques & cloud AI services",
-         "Analyze › Language · Batch analysis",
-         ["EN · HI · Hinglish detection", "Google Translate", "Translation ensemble", "LDA topics"]),
-        ("CO4", 8, "Generative AI / LLM application, prompt engineering, integration & working demo",
-         "Analyze › AI assistant",
-         ["Gemini (JSON output)", "Zero / few-shot / XAI-grounded", "Polite rewrite", "BERT re-check"]),
-    ]))
-    st.write("")
-    html(ui.heading("How it works"))
-    html(ui.architecture([
-        ("1 · Input", "Comment or file", "Text box, or CSV / Excel / TXT / PDF upload"),
-        ("2 · Language", "Detect & translate", "English / Hindi / Hinglish, Google Translate"),
-        ("3 · Preprocess", "Clean & tokenise", "Normalisation, stop-words, TF-IDF, WordPiece"),
-        ("4 · Detect", "Fine-tuned mBERT", "6 category scores with tuned thresholds"),
-        ("5 · Explain", "XAI", "Integrated Gradients + Occlusion (+ LIME)"),
-        ("6 · Analyse", "Sentiment & entities", "VADER, spaCy NER, targets, LDA topics"),
-        ("7 · Generate", "LLM assistant", "Explanation, slang meaning, polite rewrite"),
-    ]))
-    st.write("")
-    html(ui.heading("Data & models"))
-    html('<div class="tg-card"><div style="line-height:1.9;color:var(--ink-2)">'
-         "<b>Data:</b> Jigsaw Toxic Comment Classification (English, 6 labels) · TextDetox multilingual toxicity (Hindi, Hinglish, English)<br>"
-         "<b>Detector:</b> bert-base-multilingual-cased, fine-tuned with a masked multi-label loss and per-category thresholds<br>"
-         "<b>Other components:</b> VADER sentiment · spaCy NER · scikit-learn LDA &amp; TF-IDF · Google Gemini</div></div>")
