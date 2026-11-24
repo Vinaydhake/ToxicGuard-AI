@@ -69,10 +69,11 @@ html(ui.brand_bar(APP_NAME, "Explainable multilingual toxic-comment detection",
                   IS_FINETUNED, "Fine-tuned mBERT" if IS_FINETUNED else "Fallback BERT",
                   llm_available(), llm_label().split(" (")[0] if llm_available() else "LLM offline"))
 
-tab_analyze, tab_batch, tab_perf, tab_about = st.tabs(
-    [":material/search: Analyze", ":material/upload_file: Batch analysis", ":material/insights: Model performance",
-     ":material/school: Project & rubric"])
-
+tab_analyze, tab_batch, tab_perf = st.tabs(
+    [":material/search: Analyze",
+     ":material/upload_file: Batch analysis",
+     ":material/insights: Model performance"]
+)
 
 # ====================================================================== helpers
 def current_settings() -> Settings:
